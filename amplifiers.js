@@ -1,8 +1,7 @@
 const { runOpCode } = require('./computer');
 const { write: memWrite } = require('./computer/memory');
 const io = require('./computer/io');
-const { drawAmp } = require('./computer/log');
-const { instructionPointerStart } = require('./computer/const');
+const { drawAmp } = require('./computer/draw');
 
 module.exports = ({ phases, program }) => phases.reduce((output, phase, i) => {
   io.input = phase;
@@ -11,7 +10,7 @@ module.exports = ({ phases, program }) => phases.reduce((output, phase, i) => {
   memWrite(program);
 
   try {
-    runOpCode(instructionPointerStart);
+    runOpCode();
   } catch(e) {
     console.error(e);
     process.exit(0);

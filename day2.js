@@ -1,4 +1,3 @@
-const instructionPointerStart = 0;
 const instructionsNumber = 4;
 
 const originalInts =
@@ -41,8 +40,8 @@ for (let noun=0; noun<100; noun++)
     ints = [...originalInts];
     ints[1] = noun;
     ints[2] = verb;
-    executeOpcode(instructionPointerStart);
-    if (ints[instructionPointerStart] === 19690720)
+    executeOpcode();
+    if (ints[0] === 19690720)
       console.log(100 * noun + verb);
   }
 

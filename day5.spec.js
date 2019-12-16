@@ -1,9 +1,8 @@
 const { runOpCode } = require('./computer');
 const { write: memWrite } = require('./computer/memory');
 const io = require('./computer/io');
-const { instructionPointerStart } = require('./computer/const');
 
-const echo = [ 3,0,4,0, 99 ];
+const echo = [ 3,0, 4,0, 99 ];
 const sum = [ 1101,2,3,7, 4,7, 99 ];
 const mult = [ 2,7,8,9, 4,9, 99, 4, 5 ];
 const equalTo8pos = [ 3,9, 8,9,10,9, 4,9, 99, -1,8 ];
@@ -19,7 +18,7 @@ describe('day 5', () => {
     it('should output 1', () => {
       memWrite(echo);
       io.input = 1;
-      runOpCode(instructionPointerStart);
+      runOpCode();
       expect(io.output).toEqual(1);
     })
   });
@@ -27,7 +26,7 @@ describe('day 5', () => {
   describe('add(2, 3)', () => {
     it('should return 5', () => {
       memWrite(sum);
-      runOpCode(instructionPointerStart);
+      runOpCode();
       expect(io.output).toEqual(5);
     })
   });
@@ -35,17 +34,17 @@ describe('day 5', () => {
   describe('mult(4, 5)', () => {
     it('should return 20', () => {
       memWrite(mult);
-      runOpCode(instructionPointerStart);
+      runOpCode();
       expect(io.output).toEqual(20);
     })
-  })
+  });
 
   describe('equalTo8pos', () => {
     describe('given input 8', () => {
       it('should output 1', () => {
         memWrite(equalTo8pos);
         io.input = 8;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1);
       })
     });
@@ -53,7 +52,7 @@ describe('day 5', () => {
       it('should output 0', () => {
         memWrite(equalTo8pos);
         io.input = 5;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(0);
       })
     });
@@ -64,7 +63,7 @@ describe('day 5', () => {
       it('should output 1', () => {
         memWrite(equalTo8im);
         io.input = 8;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1);
       })
     });
@@ -72,7 +71,7 @@ describe('day 5', () => {
       it('should output 0', () => {
         memWrite(equalTo8im);
         io.input = 5;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(0);
       })
     });
@@ -83,7 +82,7 @@ describe('day 5', () => {
       it('should output 0', () => {
         memWrite(lessThan8pos);
         io.input = 8;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(0);
       })
     });
@@ -91,7 +90,7 @@ describe('day 5', () => {
       it('should output 1', () => {
         memWrite(lessThan8pos);
         io.input = 5;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1);
       })
     });
@@ -102,7 +101,7 @@ describe('day 5', () => {
       it('should output 0', () => {
         memWrite(lessThan8im);
         io.input = 8;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(0);
       })
     });
@@ -110,7 +109,7 @@ describe('day 5', () => {
       it('should output 1', () => {
         memWrite(lessThan8im);
         io.input = 5;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1);
       })
     });
@@ -121,7 +120,7 @@ describe('day 5', () => {
       it('should output 0', () => {
         memWrite(jumpIfFalse);
         io.input = 0;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(0);
       })
     });
@@ -129,7 +128,7 @@ describe('day 5', () => {
       it('should output 1', () => {
         memWrite(jumpIfFalse);
         io.input = 5;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1);
       })
     });
@@ -140,7 +139,7 @@ describe('day 5', () => {
       it('should output 0', () => {
         memWrite(jumpIfTrue);
         io.input = 0;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(0);
       })
     });
@@ -148,7 +147,7 @@ describe('day 5', () => {
       it('should output 1', () => {
         memWrite(jumpIfTrue);
         io.input = 5;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1);
       })
     });
@@ -159,7 +158,7 @@ describe('day 5', () => {
       it('should output 1000', () => {
         memWrite(compareTo8);
         io.input = 8;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1000);
       })
     });
@@ -167,7 +166,7 @@ describe('day 5', () => {
       it('should output 999', () => {
         memWrite(compareTo8);
         io.input = 4;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(999);
       })
     });
@@ -175,7 +174,7 @@ describe('day 5', () => {
       it('should output 1001', () => {
         memWrite(compareTo8);
         io.input = 10;
-        runOpCode(instructionPointerStart);
+        runOpCode();
         expect(io.output).toEqual(1001);
       })
     });

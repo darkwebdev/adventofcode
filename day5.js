@@ -1,7 +1,6 @@
 const { runOpCode } = require('./computer');
 const { write: memWrite } = require('./computer/memory');
 const io = require('./computer/io');
-const { instructionPointerStart } = require('./computer/const');
 
 const tests = [
   //0: write 1 to @225
@@ -17,8 +16,8 @@ const tests = [
 ];
 io.input = 1;
 memWrite(tests);
-runOpCode(instructionPointerStart);
+runOpCode();
 
 io.input = 5;
 memWrite(tests);
-runOpCode(instructionPointerStart);
+runOpCode();
